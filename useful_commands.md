@@ -72,3 +72,5 @@
 * docker run -it --name my-container --network my-network ubuntu
 * ping my-container (this way you can use the container name to ping another container)
 * docker network inspect my-network
+
+### Docker compose
