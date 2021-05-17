@@ -44,6 +44,7 @@
 * docker run -d -p 12345:80 --name my-site dockersamples/static-site (maps the port 12345 of the host to the port 80 of the container)
 * docker run -d -p 12345:80 -e AUTHOR="dRoveda" --name my-site dockersamples/static-site (maps the port 12345 of the host to the port 80 of the container)
 * docker stop $(docker ps -q) (stop all the containers)
+* docker exec -it container1 ping container2
 
 
 ### Working with volumes
@@ -59,18 +60,30 @@
 ### Using docker hub
 * create an account on docker hub
 * docker login
-* docker push {image name}
+* docker push {image name} (send the image)
+* docker pull {image name} (download the image)
 
 ### Other general linux util commands
-* hostname -i (shows ip)
 * netstat -atunp
 * apt-get update && apt-get install -y iputils-ping
 
 ### Docker working with network
+* hostname -i (shows ip, works only inside a container)
 * docker network create --driver bridge my-network (create a network)
 * docker network ls (list networks)
 * docker run -it --name my-container --network my-network ubuntu
 * ping my-container (this way you can use the container name to ping another container)
 * docker network inspect my-network
 
+
+### Install docker compose on linux
+* (execute the following to install) sudo curl -L https://github.com/docker/compose/releases/download/1.15.0/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose
+* (make docker compose executable) sudo chmod +x /usr/local/bin/docker-compose
+
 ### Docker compose
+* docker-compose build (this command will build the images that a docker-compose file needs)
+* docker-compose up
+* docker-compose up -d
+* docker-compose ps
+* docker-compose down
+* docker-compose restart
